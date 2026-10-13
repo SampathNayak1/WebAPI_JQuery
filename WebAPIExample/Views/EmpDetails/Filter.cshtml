@@ -1,0 +1,30 @@
+﻿
+ <html>
+ <body>
+     <form>
+         <h1>JQuery Ajax - Web API - Filter </h1> <br />
+         Search : <input type="text" id="ename" /> <br /> <br />
+         <input type="button" id="btn" value="Search" /><br /><br />
+         <table id="tbl" border="1"></table>
+     </form>
+    <script src="~/Scripts/jquery-3.7.0.js"></script>
+     <script>
+         $("#btn").click(fun1);
+         function fun1(event)
+         {
+             event.preventDefault();
+             $.ajax({url:"/api/Employee?name="+$("#ename").val(), type:"GET", success:fun2, error:fun3  })
+         }
+         function fun2(response){
+             $("#tbl").html("<tr><th>Emp Id</th> <th>Emp Name</th> <th>Emp Sal</th> </tr>");
+             for(var i=0;i<response.length;i++){
+                 $("#tbl").append("<tr><td>" + response[i].EmpId + "</td><td>" + response[i].EmpName + "</td><td>" + response[i].EmpSalary + "</td></tr>")
+             } 
+         }
+         function fun3(err){
+             alert(err.responseText);
+         }
+     </script>
+ </body>
+</html>
+

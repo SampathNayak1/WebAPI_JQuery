@@ -239,6 +239,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\EmpDetails\Create.cshtml" />
+    <Content Include="Views\EmpDetails\Update.cshtml" />
+    <Content Include="Views\EmpDetails\Filter.cshtml" />
+    <Content Include="Views\EmpDetails\Delete.cshtml" />
+    <Content Include="Views\EmpDetails\GetData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

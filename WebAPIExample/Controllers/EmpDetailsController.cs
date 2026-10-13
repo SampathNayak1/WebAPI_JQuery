@@ -13,5 +13,22 @@ namespace WebAPIExample.Controllers
         {
             return View();
         }
+        public ActionResult GetData()
+        {
+            return View();
+        }
+        public ActionResult Filter()
+        {
+            return View();
+        }
+        public ActionResult Update()
+        {
+            return View();
+        }
+        public ActionResult Delete()
+        {
+            return View();
+        } 
     }
+
 }

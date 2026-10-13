@@ -1,27 +1,32 @@
-﻿
-<html>
-    <body>
-        <h1>Web API Get</h1>
-        <form>
-            <input type="button" id="btn1" value="Get Data"/>
-            <table id="tbl1" border="1"></table>
-        </form>
-        <script src="~/Scripts/jquery-3.7.0.js"></script>
-        <script>
-            $("#btn1").click(fun1);
-            function fun1() {
-                $.ajax({ url: "/api/Employee", type:"GET" , success: fun2, error: fun3 });
-            }
-            function fun2(response) {
-                $("#tbl1").html("<tr> <th>Emp Id</th> <th>Emp Name</th> <th>Emp Sal</th> </tr>")
-                for (var i = 0; i < response.length; i++) {
-                    $("#tbl1").append("<tr><td>" + response[i].EmpId + "</td><td>" + response[i].EmpName + "</td><td>" +
-                        response[i].EmpSalary + "</td></tr>")
-                }
-            }
-            function fun3(err) {
-                alert(err.responseText);
-            }
-        </script>
-    </body>
+﻿<html>
+<body>
+    <form>
+        <h1>Web API POST</h1>
+        Employee Name : <input type="text" id="ename"/> <br /> <br />
+        Employee Salary: <input type="text" id="esal" /><br /><br />
+        <input type="button" value="Insert" id="btn1"/>
+        <div id="result"></div>
+    </form>
+    <script src="~/Scripts/jquery-3.7.0.js"></script>
+    <script>
+        $("#btn1").click(fun1);
+        function fun1(event) {
+            event.preventDefault();
+            var emp = { "EmpName": $("#ename").val(), "EmpSalary": $("#esal").val() };
+            $.ajax({
+                url: "/api/Employee",
+                type: "POST",
+                data: emp,
+                success: fun2,
+                error:fun3 
+            })
+        }
+        function fun2(response) {
+            $("#result").html(response);
+        }
+        function fun3(err) {
+            alert(err.responseText)
+        }
+    </script>
+</body>
 </html>
